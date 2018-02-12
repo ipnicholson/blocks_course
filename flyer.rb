@@ -12,26 +12,49 @@ class Flyer
   end
 end
 
+# Create array of Flyers objects
 flyers = []
 
 1.upto(5) do |n|
-  flyers << Flyer.new("flyer#{n}", "flyer#{n}@example.com", 45_000 + n * 2300)
+  flyers << Flyer.new("Flyer #{n}", "flyer#{n}@example.com", 45_000 + n * 2300)
 end
 
-# puts flyers
+class Promotion
 
-# puts Flyer.new("Jack Donaghy", "jack@30rock.com", 123_345)
+  PROMOTIONS = {
+    "United" => 1.5,
+    "Lufthansa" => 2.0,
+    "Delta" => 2.5
+  }
+
+  def initialize(flyers) # array of Flyers objects
+    @flyers = flyers
+  end
+
+  def print
+    @flyers.each do |flyer|
+      PROMOTIONS.each do |airline, multiplier|
+        puts "#{flyer.name} could earn #{flyer.miles_flown * multiplier} miles by flying #{airline}!"
+      end
+    end
+  end
+
+end
+
+my_promotions = Promotion.new(flyers)
+
+my_promotions.print
+
 
 # flyers.each { |flyer| puts "#{flyer.name}: #{flyer.miles_flown} miles flown" }
 
-total = 0
-flyers.each { |flyer| total += flyer.miles_flown }
-puts "Total miles flown: #{total}"
+# total = 0
+# flyers.each { |flyer| total += flyer.miles_flown }
+# puts "Total miles flown: #{total}"
 
-promotions = {
-  "United" => 1.5,
-  "Lufthansa" => 2.0,
-  "Delta" => 2.5
-}
 
 # promotions.each { |airline, promotion| puts "Earn #{promotion.to_s}x miles by flying #{airline}!" }
+
+# Iterators within iterators
+
+
