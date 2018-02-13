@@ -23,22 +23,14 @@
 
 # puts orders
 
-# 1.upto(5) do |count|
+# range = 1..10
+
+# range.step(3) do |count|
 #   puts "#{count} situp \n#{count} pushup \n#{count} chinup"
 # end
 
-class Flyer
-  attr_reader :name, :email, :miles_flown
+# or
 
-  def initialize(name, email, miles_flown)
-    @name = name
-    @email = email
-    @miles_flown = miles_flown
-  end
-
-  def to_s
-    puts "#{name} (#{email}): #{miles_flown} miles"
-  end
+1.step(9, 2) do |count|
+  puts "#{count} situp \n#{count} pushup \n#{count} chinup"
 end
-
-puts Flyer.new("Jack Donaghy", "jack@30rock.com", 123_345)
