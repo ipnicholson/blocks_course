@@ -1,37 +1,58 @@
 require_relative 'flyer'
+require_relative 'manifest'
 require_relative 'promotion'
 
-# Create array of Flyers objects
-flyers = []
+# Instantiate Flyers objects
+flyer1 = Flyer.new("Welp", "welp@example.com", 45_000, :platinum)
+flyer2 = Flyer.new("Barry", "barry@example.com", 2_000)
+flyer3 = Flyer.new("Anastasia", "anastasia@example.com", 25_000)
+flyer4 = Flyer.new("Chelsea", "chelsea@example.com", 95_000, :gold)
 
-flyers << Flyer.new("Welp", "welp@example.com", 45_000, :platinum)
-flyers << Flyer.new("Barry", "barry@example.com", 2_000)
-flyers << Flyer.new("Anastasia", "anastasia@example.com", 25_000)
-flyers << Flyer.new("Chelsea", "chelsea@example.com", 95_000, :gold)
+# Create Manifest of Flyers objects
+manifest = Manifest.new
 
-# Create promotion
-my_promotions = Promotion.new(flyers)
+# Add flyers to manifest
+manifest.add_flyer(flyer1)
+manifest.add_flyer(flyer2)
+manifest.add_flyer(flyer3)
+manifest.add_flyer(flyer4)
 
-my_promotions.print
+manifest.print_status
+manifest.print_name_tags
 
-# Identify frequent flyers (>=3000 mi)
+puts manifest.print_miles_flown_in_km
 
-frequent_flyers = flyers.select { |flyer| flyer.miles_flown >= 3000 }
-  puts "Frequent Flyers: #{frequent_flyers}"
+manifest.total_miles_flown
+manifest.total_km_flown
+
+manifest.top_flyer
 
 
-infrequent_flyers = flyers.reject { |flyer| flyer.miles_flown >= 3000 }
-  puts "Infrequent Flyers: #{infrequent_flyers}"
+# # Create promotion
+# my_promotions = Promotion.new(flyers)
 
-# Any flyers achieved Platinum status?
+# my_promotions.print
 
-puts "\nPlatinum Flyers?:"
-puts flyers.any? { |flyer| flyer.status == :platinum}
+# # Identify frequent flyers (>=3000 mi)
 
-# Find first infrequent flyer
+# frequent_flyers = flyers.select { |flyer| flyer.miles_flown >= 3000 }
+#   puts "Frequent Flyers: #{frequent_flyers}"
 
-puts "\nFirst Infrequent Flyer:"
-puts flyers.detect { |flyer| flyer.status == :bronze }
+
+# infrequent_flyers = flyers.reject { |flyer| flyer.miles_flown >= 3000 }
+#   puts "Infrequent Flyers: #{infrequent_flyers}"
+
+# # Any flyers achieved Platinum status?
+
+# puts "\nPlatinum Flyers?:"
+# puts flyers.any? { |flyer| flyer.status == :platinum}
+
+# # Find first infrequent flyer
+
+# puts "\nFirst Infrequent Flyer:"
+# puts flyers.detect { |flyer| flyer.status == :bronze }
+
+
 
 # flyers.each { |flyer| puts "#{flyer.name}: #{flyer.miles_flown} miles flown" }
 
