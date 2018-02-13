@@ -15,11 +15,21 @@ module Scores
   puts first_failing_score
 
   # Permanently kick out all even scores
-  scores.reject! { |score| score.even? }
-  puts scores
+  # scores.reject! { |score| score.even? }
+  # puts scores
 
   # Permanently delete scores < 70
-  scores.reject! { |score| score < 70 }
-  puts scores
+  # scores.reject! { |score| score < 70 }
+  # puts scores
+
+  scores_doubled = scores.map { |n| n * 2 }
+  puts scores_doubled
+
+  scores_total = scores.reduce(:+)
+  puts "\nTotal Scores: #{scores_total}"
+
+  evens, odds = scores.partition { |score| score.even? }
+  puts "\nEvens: #{evens}"
+  puts "\nOdds: #{odds}"
 
 end
