@@ -1,38 +1,22 @@
 class Flyer
-  attr_reader :name, :email, :miles_flown
 
-  def initialize(name, email, miles_flown)
+  attr_reader :name, :email, :miles_flown
+  attr_accessor :status
+
+  def initialize(name, email, miles_flown, status = :bronze)
     @name = name
     @email = email
     @miles_flown = miles_flown
+    @status = status
   end
 
   def to_s
-    puts "#{name} (#{email}): #{miles_flown} miles"
+    puts "#{name} (#{email}): #{miles_flown} miles - #{status}"
+  end
+
+  if __FILE__ == $0
+    flyer = Flyer.new("Amelia Earhart", "lostatsea@example.com", 234_500, :platinum)
+    puts flyer
   end
 end
-
-# Create array of Flyers objects
-flyers = []
-
-1.upto(5) do |n|
-  flyers << Flyer.new("Flyer #{n}", "flyer#{n}@example.com", 45_000 + n * 2300)
-end
-
-my_promotions = Promotion.new(flyers)
-
-my_promotions.print
-
-
-# flyers.each { |flyer| puts "#{flyer.name}: #{flyer.miles_flown} miles flown" }
-
-# total = 0
-# flyers.each { |flyer| total += flyer.miles_flown }
-# puts "Total miles flown: #{total}"
-
-
-# promotions.each { |airline, promotion| puts "Earn #{promotion.to_s}x miles by flying #{airline}!" }
-
-# Iterators within iterators
-
 
