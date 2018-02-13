@@ -14,4 +14,12 @@ module Scores
   first_failing_score = scores.detect { |score| score < 70 }
   puts first_failing_score
 
+  # Permanently kick out all even scores
+  scores.reject! { |score| score.even? }
+  puts scores
+
+  # Permanently delete scores < 70
+  scores.reject! { |score| score < 70 }
+  puts scores
+
 end
